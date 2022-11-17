@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UD02_kaprekar number</title>
+    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+    <script src="">//linkar archivo externo.js</script>   
+    <script></script>
+    <style type="text/css">
+        body{background-color:rgb(52, 52, 64);color:white;padding:150px;font-family: 'Varela Round', sans-serif;}      
+        h1,h2,h3{color:rgb(107, 194, 165); text-shadow: 1px 1px 1px #ababab;}
+    </style>
+</head>
+<body>
+    
+
+    <h1>JS Número de Kaprekar</h1>
+    <hr><br><h4>Numbers, strings, arrays: methods!</h4><br>
+
+
+    <script>
+        /* UD02 Activitat kaprekar 6174
+        Número de cuatro cifras, dos diferentes mínimo. 
+        Ordenarlo de mayor a menor y luego de menor a mayor
+        y restar. Máx 7 pasos (Recursividad?)
+        */
+        // Autor:Dani Arguimbau
+        /* Dubtes:
+
+        
+            
+        */  
+        // Declaració de variables
+        
+        let numeroUser;
+        let contador = 0;
+        let arrayNums = [];
+        let arrayControl = [];         
+        let small;
+        let big;
+        let pass = false;
+
+        
+        //Control de longitud y cifras diferentes (control de numeros, cero a la izquierda? y letras?)
+
+        do {
+            numeroUser = prompt("Teclea un número de 4 cifras (Mínimo dos diferentes)");            
+            arrayControl = numeroUser.toString().split(""); 
+            pass = controlRepes(arrayControl);            
+            console.log(pass);
+            console.log(arrayControl);
+        }while (arrayControl.length !=4 || !pass);
+
+        document.write("<h2>Número introducido: "+ numeroUser+"</h2><br>");
+
+        for(let i=0;i<7;i++){
+
+            arrayNums = numeroUser.toString().split("").sort();                   
+            small = parseInt(arrayNums.toString().replace(/,/g, ""));
+            big = parseInt(arrayNums.reverse().toString().replace(/,/g, ""));
+            numeroUser = big - small;
+            if (numeroUser == 999){//Control si hay 3 cifras iguales!
+                document.write(big +" - "+ small +" = "+numeroUser+"<br>");
+                big = 9990;
+                small = 0999;
+                numeroUser = big - small;
+            }        
+            document.write(big +" - "+ small +" = "+numeroUser+"<br>");
+            contador++;
+            
+            if(numeroUser == 6174){
+                break;
+            }
+        }   
+        document.write("Vueltas: "+ contador);
+
+        //Función que retorna true si encuentra valores diferentes en un array
+        // Fallo! si tres cifras son iguales tiene que devolver false también <-------------------------------------
+        function controlRepes(arrCheck){
+
+            let pass = false;
+            arrCheck.sort();
+            //alert(arrCheck);
+            //alert(pass); 
+            for(let i = 0; i < arrCheck.length - 1; i++){// faltaba un -1 
+                //alert(arrCheck[i+1]);
+                if(arrCheck[i+1] != arrCheck[i]){ //el problema esta aquí? NO              
+                    pass = true;
+                }
+            }
+            //alert(pass); 
+            return pass;
+        }
+
+    
+      
+    </script>
+    
+    <pre>
+        <code>
+            /* UD02 Activitat kaprekar 6174
+            Número de cuatro cifras, dos diferentes mínimo. 
+            Ordenarlo de mayor a menor y luego de menor a mayor
+            y restar. Máx 7 pasos (Recursividad?)
+            */
+            // Autor:Dani Arguimbau
+            /* Dubtes:
+    
+            
+                
+            */  
+            // Declaració de variables
+            
+            let numeroUser;
+            let contador = 0;
+            let arrayNums = [];
+            let arrayControl = [];         
+            let small;
+            let big;
+            let pass = false;
+    
+            
+            //Control de longitud y cifras diferentes (control de numeros, cero a la izquierda? y letras?)
+    
+            do {
+                numeroUser = prompt("Teclea un número de 4 cifras (Mínimo dos diferentes)");            
+                arrayControl = numeroUser.toString().split(""); 
+                pass = controlRepes(arrayControl);            
+                console.log(pass);
+                console.log(arrayControl);
+            }while (arrayControl.length !=4 || !pass);
+    
+            document.write("&lth2>Número introducido: "+ numeroUser+"&lt/h2>&ltbr>");
+    
+            for(let i=0;i &lt 7;i++){
+    
+                arrayNums = numeroUser.toString().split("").sort();                   
+                small = parseInt(arrayNums.toString().replace(/,/g, ""));
+                big = parseInt(arrayNums.reverse().toString().replace(/,/g, ""));
+                numeroUser = big - small;
+                if (numeroUser == 999){
+                    document.write(big +" - "+ small +" = "+numeroUser+"&ltbr>");
+                    big = 9990;
+                    small = 0999;
+                    numeroUser = big - small;
+                }        
+                document.write(big +" - "+ small +" = "+numeroUser+"&ltbr>");
+                contador++;
+                
+                if(numeroUser == 6174){
+                    break;
+                }
+            }   
+            document.write("Vueltas: "+ contador);
+    
+            //Función que retorna true si encuentra valores diferentes en un array
+            // Fallo! si tres cifras son iguales tiene que devolver false también &lt-------------------------------------
+            function controlRepes(arrCheck){
+    
+                let pass = false;
+                arrCheck.sort();
+                //alert(arrCheck);
+                //alert(pass); 
+                for(let i = 0; i &lt arrCheck.length - 1; i++){// faltaba un -1 
+                    //alert(arrCheck[i+1]);
+                    if(arrCheck[i+1] != arrCheck[i]){ //el problema esta aquí? NO              
+                        pass = true;
+                    }
+                }
+                //alert(pass); 
+                return pass;
+            }
+        
+        </code>
+    </pre>
+    
+</body>
+</html>

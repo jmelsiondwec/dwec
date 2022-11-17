@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    
+    <p id="miArrayChispas"></p>
+
+    <script>
+        let arrDias = [23, "lunes", "martes", 2, "a"];
+
+        //console.log(arrDias.length);
+        arrDias.sort();
+        //arrDias.push("azz");
+        //arrDias[0] = 22;
+        //arrDias[2] = new Date("08/06/2002");
+
+
+        //console.log(a);
+
+        document.getElementById("miArrayChispas").innerHTML = arrDias;
+
+        arrDias.forEach(provaRecorrerArray);
+
+        function provaRecorrerArray(valor, index, array) {
+            console.log(valor);
+            //console.log(index);
+            //console.log(array);
+        }
+
+
+    </script>
+
+
+
+
+
+</body>
+</html>
