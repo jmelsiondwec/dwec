@@ -37,6 +37,7 @@ function ompleUI() {
     const seientsSeleccionats = JSON.parse(localStorage.getItem('seientsSeleccionats'));
 
     if(seientsSeleccionats !== null && seientsSeleccionats.length > 0 ) {
+        console.log(seientsSeleccionats[0]);
         seients.forEach((seient, index) => {
             //console.log('seient: ' + seient);
             //console.log('index: ' + index);
