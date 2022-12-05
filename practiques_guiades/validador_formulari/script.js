@@ -23,9 +23,15 @@ function prenNomInput(input) {
     return input.id.charAt(0).toUpperCase() + input.id.slice(1);
 }
 
-function esEmailValid(email) {
+function esEmailValid(input) {
     const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(String(email).toLocaleLowerCase()); //true, false
+    
+    if(re.test(String(input.value.trim()))) {
+        mostraCorrecte(input);
+    } else {
+        let missatge = `${prenNomInput(input)} no té el format correcte`;
+        mostraError(input, missatge);
+    }
 }
 
 function esObligatori(inputArray) {
@@ -55,6 +61,13 @@ function comprovaLongitud(input, min, max) {
     }
 }
 
+function comprovaConstrasenyesSonIguals(input1, input2) {
+    if(input1.value != input2.value) {
+        let missatge = `${prenNomInput(input2)} ha de ser igual que ${prenNomInput(input1)}`;
+        mostraError(input2, missatge);
+    }
+}
+
 
 /* function esObligatori(input) {
     if(input.value.trim() === '') {
@@ -70,5 +83,9 @@ form.addEventListener('submit', function(e) {
 
     comprovaLongitud(nomusuari, 3, 15);
     comprovaLongitud(password, 6, 25);
+
+    esEmailValid(email);
+
+    comprovaConstrasenyesSonIguals(password, password2);
 
 });
